@@ -1,1 +1,84 @@
-içerik
+GENEL PROĞRAMLAMA
+013 – 1 nolu ışığı yak #  panel dirençsizse       380 – 1 – 4 – 5 – 6 # haberleşme opsiyonları
+701 – 1 – 2 # 50 hz elektrik saat ayarı
+
+ZONE ÖZELLİKLERİ
+001 – 1. zone – 2. zone – 3.zone – 4.zone – 5.zone – 6.zone #      |   202 den kullanılmayan zoneları kapat
+Zon artırım kartı varsa 002 – 003 şeklinde devam eder. Her bölümde 16 zon var. 17.zone 002 ye atlar.
+00 – kullanılmayan zone     01 – gecikmeli zone   02 – 2.gecikmeli zone           03 – ani zone
+05 – saygılı kısmi     06 – gecikmeli kısmi (evde iken aktif)        11 – 24 saat panik (siren gibi)         08 – yangın
+
+ZONE ALT ÖZELLİKLER
+101 – 1. zone 102 – 2.zone 132 – 32.zone gibi devam eder.
+1 nolu ışık – sesli / sessiz alarm        4 nolu ışık – baypas edilir / edilemez.  5 nolu ışık görsede kurdur/kurdurma
+8 nolu ışık – kablosuz zone/kablolu zone                                                                                    yanık/sönük
+
+GİRİŞ ÇIKIŞ VE SİREN SÜRESİ AYARI
+005 – 01 – 1.giriş süresi – 2. giriş süresi – çıkış süresi – 09 – siren çalma süresi
+*8 – 5555 – 005 – 01 – 020 – 020 – 030 – 09 – 004 #
+1. giriş 20 saniye 2. giriş 20 saniye çıkış 30 saniye siren çalma süresi 4 dakika örneği
+
+KEYPAD ÜZERİNDEKİ F VE P BUTONLARINI AKTİF ETMEK
+015 – 1 ve 2 nolu ışıkları yak
+012 – 003 – 005   geçersiz 3 şirfe hakkı, 3 şifreden sonra 5 dakika bekler.
+ALARM MERKEZİNE YÖNLENDİRMEK
+301 – 0332 320 30 40 #    
+303 – 0332 322 25 16 #
+310 – account numarası #  sıa formatta 4 haneli accountun önüne 00 , diğer formatlar sonuna 00 ekle.
+380 – 1 – 5 – 6  numaralı ışıkları yak #                            
+350 – 03 – 03 #          
+378 – test sinyali saatini gir # (0000 – 2359 arasında)          
+165 – panel arama sayısı # (default 005 defa)                    
+377 – 003 - 003 – 003 – 000 – 005 – 001 – 001 – 030 – 007 – 030 – 007                         367 – 1 i yak
+
+
+
+
+
+
+
+
+
+MÜHENDİSLİK KOD İŞLEMLERİ
+006 yeni mühendislik kodu #                     |    *8 5555 - 990 # paneli kilitlemek   / 991 kiliti kaldırmak
+403 ve 404 e – 6 haneli yeni şifre gir uzaktan panale bağlanmak için.  |
+
+TARİH AYARLARI
+* 6 ana şifre 1 ss dd aa gg yy #
+İki hane olacak şekilde sırası ile saat, dakika, ay, yıl, ve gün girilir
+(Pazar 1 – pazrtsi 2 – Salı 3 – Çrşmba 4 – prşmb 5 – Cuma 6 – cumrtsi 7)
+KULLANICI ŞİFRELERİ DEĞİŞTİRME
+* 5 – 1234 – 40 – yeni master şifre #  master şifre değiştirme   |      *5 – 1234 – id * # şifre silmek
+* 5 – 1234 – 01 ile 32 arasında kullanıcı id – yeni şifre #     |         33 ve 34 şifreler duress tehlike şifreleri
+
+
+PGM ÖZELLİKLERİNİ KULLANMAK
+501 – pgm1 proğram          502 – pgm2 proğram          503 – pgm3 proğram
+00 – kullanım dışı     01 – siren çıkışı (-) voltaj    |  170  - 004 pgm aktif kalma zamanı 4 dakika
+
+PANEL İŞLEMLERİ
+*8 – 5555 – 999 – 5555 – 999 #  paneli resetlemek    |   *6 – 1234 – 4 ##  sistemi test etmek
+*8 – 5555 – 020 – 07 # keypad zonu 7 nolu zon oldu.       |  701 de 5 nolu ışık açılırsa şifreler 6 haneli olur.
+
+SİSTEM ARIZALARI *2
+1 – 1 e tekrar basılır 1 yanıyorsa akü , 2 yanıyorsa bell + - arası direnç hatası  8 – saat tarih ayarsız
+2 – elektrik problemi   3 – telefon hattı problemi  4 – haberleşme problemi  5 – çalışmayan dedektör hatası 5 bas
+6 – bir bileşen yerinden sökülmüştür 6 ya tekrar bas hangisi olduğunu gör 7 – kablosuz ürün pil azalması
+* 0 – sistemi hızlı kurmak | *1 – 01 03 05  şifre # 1.3.5. pırlarsız kurmak | *3 – alarm hafızası |
+
+
+
+KABLOSUZ CİHAZ TANITMAK 9045 de
+*8 – 5555 – 898
+Seri no doğru ise * a bas. Ardından kaçıncı zon olduğunu ve zon öelliğini gir. Problem varda 804 ten kendin tanıt.
+
+KABLOSUZ TANITMA ÖZELLİKLERİ
+*8 5555 – 804 – zone no – esn no #  kablosuz dedektör tanıtmak
+*8 5555 – 804 – 41 – esn no#  1. uzaktan kumanda. 56 ya kadar 16 adet kumanda tanıtılabilir.
+25b42d olan bir esn no 25*2*42*4 olarak tanıtılır. Yıldız harften rakama veya rakamdan harfe geçici gösterir.
+1 = a    2=b    3=c     4=d     5=e      6=f
+Kablosuz tanıtmadan sonra 902 yap 10 sn  bekle 903 yap 1 – 17 görürsen problem yok
+902 kablosuz modülleri denetler – 903 sonucu gösterir.
+101 – zone alt özelliklerden kablosuz olanlarda 8 i yak.
+
+Zon ayarlarken iki defa A basarsan 2. zona geçer.
